@@ -1,3 +1,4 @@
+import logging
 import sys
 from pathlib import Path
 
@@ -150,8 +151,12 @@ if run_button:
             st.error(str(error))
         except GatewayProviderError as error:
             st.error(str(error))
-        except Exception:
-            st.error(
-                "An unexpected error occurred. "
-                "Check the application logs."
-            )
+        except Exception as error:
+            logging.error(
+        "Unexpected application error: %s",
+        type(error).__name__
+    )
+    st.error(
+        "An unexpected error occurred. "
+        "Check the application logs."
+    )
