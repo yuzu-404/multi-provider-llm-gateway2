@@ -38,8 +38,8 @@ flowchart TD
 Clone the repository and enter the project directory:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
-cd multi-provider-llm-gateway
+git clone https://github.com/yuzu-404/multi-provider-llm-gateway2.git
+cd multi-provider-llm-gateway2
 ```
 
 Install dependencies:
@@ -127,9 +127,23 @@ The project was initially developed with AI assistance and reviewed through auto
 
 See `ai_prompt_log.md` for the original prompt, verified issues in the baseline implementation, corrections, and before-and-after code comparisons.
 
-## Current Limitations
 
-- Live provider requests have not yet been verified with API credentials.
-- Streamed response text updates immediately, but telemetry currently appears after the request finishes.
-- Anthropic temperature handling requires further verification against the installed SDK and supported model capabilities.
-- Deployment has not yet been completed.
+## Deployment & Verification
+
+**Live Application:** https://lemonnn.streamlit.app
+
+The application is deployed on Streamlit Community Cloud and supports OpenAI and Anthropic API requests.
+
+### Verification Completed
+
+- Successfully tested live requests using OpenAI GPT-4o mini and Anthropic Claude Haiku 5.5.
+- Confirmed that the interface displays input/output tokens, TTFT, generation speed, total latency, and estimated USD cost.
+- Executed the automated test suite with 8 passing tests.
+- Published the project source code to GitHub.
+
+### Current Limitations
+
+- Telemetry is displayed after response completion rather than updating continuously during generation.
+- Anthropic temperature control is disabled for the selected Claude models.
+- An unexpected-error notification can still appear after successful responses in the cloud deployment and requires further investigation.
+
