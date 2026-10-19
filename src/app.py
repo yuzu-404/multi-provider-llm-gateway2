@@ -17,7 +17,10 @@ from src.gateway import (
 )
 
 load_dotenv()
-
+for name in ("OPENAI_API_KEY", "ANTHROPIC_API_KEY"):
+    key = os.getenv(name, "")
+    if key and not key.isascii():
+        st.error(f"{name} contains an invalid character")
 st.set_page_config(
     page_title="Multi-Provider LLM Gateway",
     page_icon="🤖",
